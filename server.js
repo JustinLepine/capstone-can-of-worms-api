@@ -1,8 +1,10 @@
 const express = require('express');
-const app = express();
+const middleware = require('./middleware');
 const PORT = 8080;
 
-app.use(express.json());
+const app = express();
+
+app.use(middleware());
 
 const inventoryRoute = require('./routes/inventory');
 app.use('/inventory', inventoryRoute)
