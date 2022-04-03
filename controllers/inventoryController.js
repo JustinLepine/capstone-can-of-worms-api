@@ -1,14 +1,14 @@
 const knex = require('knex')(require('../knexfile').development);
 
 exports.getInv = (req, res) => {
-    console.log(req.query)
 
     const query = knex('inventory')
         .select(
             'inventory.id',
             'inventory.title',
             'inventory.depth',
-            'inventory.target'
+            'inventory.target',
+            'inventory.category'
         )
 
         query
@@ -18,7 +18,7 @@ exports.getInv = (req, res) => {
 }
 
 exports.addInv = (req, res) => {
-    if (!req.body.title || !req.body.depth || !req.body.target) {
+    if (!req.body.title || !req.body.depth || !req.body.target || !req.body.category) {
         res.status(400).send({
             message: "Please submit a complete form."
         })

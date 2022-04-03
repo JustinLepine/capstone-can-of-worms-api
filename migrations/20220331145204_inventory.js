@@ -5,6 +5,7 @@ exports.up = function(knex) {
         table.string('title').notNullable();
         table.string('depth').notNullable();
         table.string('target').notNullable();
+        table.string('category').notNullable();
     })
 };
 
