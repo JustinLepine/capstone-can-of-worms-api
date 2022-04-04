@@ -30,3 +30,15 @@ exports.addInv = (req, res) => {
             })            
     }
 }
+
+exports.delInv = (req, res) => {
+    knex('inventory')
+        .delete()
+        .where(req.body)
+            .then(() => {
+                res.status(204).send(`This lure ${req.params.title} is now deleted`)
+            })
+            .catch(err => {
+                res.status(400).send(`Something went wrong tryin to delete ${req.params.title} : ${err}`)
+            })
+}

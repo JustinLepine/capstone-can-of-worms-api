@@ -3,6 +3,7 @@ const router = require('express').Router();
 
 router.route('/')
     .get(inventoryController.getInv)
-    .post(inventoryController.addInv);
+    .post(inventoryController.addInv)
+    .delete(inventoryController.delInv);
 
     module.exports = router;
