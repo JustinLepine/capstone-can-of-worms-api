@@ -1,4 +1,4 @@
-module.exports = {
+const connections = {
   development: {
     client: 'mysql',
     connection: {
@@ -7,6 +7,15 @@ module.exports = {
       password: 'rootroot',
       database: 'inventory-can-of-worms',
       charset: 'utf8'
-    }
+    },
+  },
+  production: {
+    client: 'mysql',
+    connection: process.env.JAWSDB_URL,
   },
 };
+
+module.exports = 
+  process.env.NODE_ENV === 'production'
+    ? connections.production
+    : connections.development;
